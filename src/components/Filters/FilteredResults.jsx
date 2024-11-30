@@ -1,58 +1,25 @@
 import { useEffect, useState } from "react";
-import reciclaje from "../../assets/Filter/frame-3.png";
-import reciclaje2 from "../../assets/Filter/frame-4.png";
-import reciclaje3 from "../../assets/Filter/frame-5.png";
+import { useNavigate } from "react-router-dom";
 import iconX from "../../assets/Filter/icon-x-letter.png";
 import search from "../../assets/Filter/search-fill0-wght400-grad0-opsz24-1.svg";
 import goBack from "../../assets/Filter/vector-4.svg";
-
-const data = {
-  1: [
-    {
-      id: 1,
-      title: "Reciclaje Básico",
-      description: "Enseñamos las bases de reciclaje básico",
-      imageUrl: reciclaje,
-    },
-    {
-      id: 2,
-      title: "Limpieza de Residuos",
-      description: "Clasifica tus residuos correctamente",
-      imageUrl: reciclaje2,
-    },
-  ],
-  2: [
-    {
-      id: 3,
-      title: "Reutilización de Plásticos",
-      description: "Cómo reutilizar plásticos correctamente",
-      imageUrl: reciclaje3,
-    },
-  ],
-  3: [],
-  4: [],
-};
-
-const categoryNames = {
-  1: "Reciclaje",
-  2: "Reutilización",
-  3: "Gestión de Residuos",
-  4: "Tips",
-};
+import { categoryNames, guides } from "../Guide/data/guides";
 
 const FilteredResults = ({ categoryId, onBack }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterResults, setFilterResults] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const categoryName = categoryNames[categoryId] || "";
     setSearchTerm(categoryName);
     setFilterResults(
-      data[categoryId]?.filter(
+      guides.filter(
         (item) =>
-          item.title.toLowerCase().includes(categoryName.toLowerCase()) ||
-          item.description.toLowerCase().includes(categoryName.toLowerCase())
-      ) || []
+          item.categoryId === categoryId &&
+          (item.title.toLowerCase().includes(categoryName.toLowerCase()) ||
+            item.description.toLowerCase().includes(categoryName.toLowerCase()))
+      )
     );
   }, [categoryId]);
 
@@ -60,21 +27,22 @@ const FilteredResults = ({ categoryId, onBack }) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
 
-    if (value === "") {
-      setFilterResults(data[categoryId] || []);
-    } else {
-      const filtered = (data[categoryId] || []).filter(
-        (item) =>
-          item.title.toLowerCase().includes(value) ||
-          item.description.toLowerCase().includes(value)
-      );
-      setFilterResults(filtered);
-    }
+    const filtered = guides.filter(
+      (item) =>
+        item.categoryId === categoryId &&
+        (item.title.toLowerCase().includes(value) ||
+          item.description.toLowerCase().includes(value))
+    );
+    setFilterResults(filtered);
   };
 
   const handleClearSearch = () => {
     setSearchTerm("");
-    setFilterResults(data[categoryId] || []);
+    setFilterResults(guides.filter((item) => item.categoryId === categoryId));
+  };
+
+  const handleGuideClick = (id) => {
+    navigate(`/guide/${id}`);
   };
 
   return (
@@ -93,7 +61,7 @@ const FilteredResults = ({ categoryId, onBack }) => {
 
       <div className="mt-4 px-4">
         <div className="relative w-full bg-white rounded-full flex items-center shadow">
-          <img className="ml-2" src={search} alt="" />
+          <img className="ml-2" src={search} alt="Search" />
           <input
             type="text"
             value={searchTerm}
@@ -123,7 +91,8 @@ const FilteredResults = ({ categoryId, onBack }) => {
           filterResults.map((item) => (
             <div
               key={item.id}
-              className="flex items-center bg-[#f3f5eb] p-4 rounded-lg mb-4 shadow"
+              className="flex items-center bg-[#f3f5eb] p-4 rounded-lg mb-4 shadow cursor-pointer"
+              onClick={() => handleGuideClick(item.id)}
             >
               <img
                 src={item.imageUrl}

@@ -1,49 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import guideImage1 from "../../assets/Filter/frame-3.png";
-import guideImage2 from "../../assets/Filter/frame-4.png";
-import guideImage3 from "../../assets/Filter/frame-5.png";
-import guideImage4 from "../../assets/Filter/frame-6.png";
-import guideImage5 from "../../assets/Filter/frame-7.png";
 import goBack from "../../assets/Filter/vector-4.svg";
-
-const guidesData = [
-  {
-    id: 1,
-    title: "Reciclaje Básico",
-    description: "Enseñamos las bases de reciclaje básico",
-    imageUrl: guideImage1,
-  },
-  {
-    id: 2,
-    title: "Limpieza de Residuos",
-    description: "Clasifica tus residuos correctamente",
-    imageUrl: guideImage2,
-  },
-  {
-    id: 3,
-    title: "Separación de residuos",
-    description: "Separa correctamente tus residuos!",
-    imageUrl: guideImage3,
-  },
-  {
-    id: 4,
-    title: "Reducir y Reutilizar",
-    description: "Reduce correctamente tus residuos, y aprende a reutilizarlos",
-    imageUrl: guideImage4,
-  },
-  {
-    id: 5,
-    title: "Identificación de residuos",
-    description: "Identifica tus residuos para su correcto reciclaje",
-    imageUrl: guideImage5,
-  },
-];
+import { guides } from "../Guide/data/guides";
 
 const GuidesPage = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
     navigate(-1);
+  };
+
+  const handleGuideClick = (id) => {
+    navigate(`/guide/${id}`);
   };
 
   return (
@@ -63,10 +30,11 @@ const GuidesPage = () => {
           </div>
 
           <div className="mt-4 px-4 overflow-y-scroll h-[calc(100%-73px)]">
-            {guidesData.map((guide) => (
+            {guides.map((guide) => (
               <div
                 key={guide.id}
-                className="flex items-center bg-[#f3f5eb] p-4 rounded-lg mb-4 shadow"
+                className="flex items-center bg-[#f3f5eb] p-4 rounded-lg mb-4 shadow cursor-pointer"
+                onClick={() => handleGuideClick(guide.id)}
               >
                 <img
                   src={guide.imageUrl}
