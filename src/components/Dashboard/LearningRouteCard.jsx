@@ -1,7 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 const LearningRouteCard = () => {
+  const navigate = useNavigate();
+
+  const goToGuides = () => {
+    navigate("/guias");
+  };
+
   return (
     <div className="w-full p-3 mt-2 iphone12pro:mt-3 iphone14promax:mt-2">
-      <div className="bg-[#edefe5] rounded-lg p-3 shadow-lg iphone12pro:p-4 iphone14promax:p-2">
+      <div className="bg-[#edefe5] rounded-lg p-3 shadow-lg iphone12pro:p-4 iphone14promax:p-4">
         <h3 className="text-base font-semibold text-[#205106] mb-1 iphone12pro:text-lg iphone14promax:text-xl">
           Ruta de Aprendizaje
         </h3>
@@ -9,7 +17,10 @@ const LearningRouteCard = () => {
           Accede a nuestra ruta de aprendizaje para tener todos los
           conocimientos necesarios en el menor tiempo posible.
         </p>
-        <button className="mt-3 px-3 py-1 bg-[#386a1f] text-white rounded shadow-md iphone12pro:py-2 iphone12pro:px-4 iphone14promax:py-3 iphone14promax:px-5">
+        <button
+          onClick={goToGuides}
+          className="mt-3 px-3 py-1 bg-[#386a1f] text-white rounded shadow-md iphone12pro:py-2 iphone12pro:px-4 iphone14promax:py-2 iphone14promax:px-5"
+        >
           IR A GUÍAS
         </button>
       </div>

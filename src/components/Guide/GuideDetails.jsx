@@ -20,7 +20,7 @@ const GuideDetails = () => {
   };
 
   const handleReport = () => {
-    alert("Funcionalidad de reporte en desarrollo.");
+    navigate("/report");
   };
 
   const handleDownload = () => {

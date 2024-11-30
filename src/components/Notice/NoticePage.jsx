@@ -16,7 +16,6 @@ const NoticePage = () => {
   return (
     <div className="bg-[#f8f9f5] flex flex-col items-center w-full min-h-screen overflow-x-hidden">
       <div className="bg-white w-full max-w-screen-md sm:max-w-screen-lg lg:max-w-screen-xl mx-auto shadow-lg min-h-screen">
-        {/* Header */}
         <div className="flex items-center p-2 bg-[#edefe5] sticky top-0 z-10 w-full">
           <button
             className="text-sm bg-transparent text-[#205106] font-bold"
@@ -24,12 +23,11 @@ const NoticePage = () => {
           >
             <img src={goBack} alt="Back" className="w-5 h-5" />
           </button>
-          <h4 className="text-center flex-grow text-black text-lg font-bold iphone12pro:text-xl iphone14promax:text-2xl">
+          <h4 className="pr-64 text-center flex-grow text-black text-lg font-bold iphone12pro:text-xl iphone14promax:text-2xl">
             Noticias
           </h4>
         </div>
 
-        {/* Noticias List */}
         <div className="mt-4 px-4 overflow-y-auto flex-grow custom-scrollbar pb-20">
           {notices.map((notice) => (
             <div

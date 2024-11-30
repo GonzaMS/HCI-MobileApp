@@ -1,4 +1,6 @@
+import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import goBack from "../../assets/Filter/vector-4.svg";
 import { notices } from "./data/notices";
 
@@ -10,6 +12,10 @@ const NoticeDetails = () => {
 
   const handleBack = () => {
     navigate(-1);
+  };
+
+  const handleReport = () => {
+    navigate("/report");
   };
 
   if (!notice) {
@@ -29,22 +35,33 @@ const NoticeDetails = () => {
   return (
     <div className="bg-[#f8f9f5] flex flex-col min-h-screen">
       <div className="bg-white shadow-md sticky top-0 z-10">
-        <div className="flex items-center justify-between p-2 bg-[#edefe5]">
+        <div className="flex items-center p-2 justify-between bg-[#edefe5]">
           <button
             className="text-sm bg-transparent text-[#205106] font-bold flex items-center"
             onClick={handleBack}
           >
             <img src={goBack} alt="Back" />
           </button>
-          <h4 className="pr-16 text-black text-xl font-bold truncate max-w-72">
+          <h4
+            className="pr-24 text-black text-xl font-bold truncate max-w-72"
+            data-tooltip-id="title"
+            data-tooltip-content={notice.title}
+          >
             Noticias {">"} {notice.title}
           </h4>
+          <Tooltip id="title" />
+
+          <button
+            onClick={handleReport}
+            className="bg-transparent flex items-center"
+          >
+            <FaInfoCircle className="w-5 h-5 text-black" />
+          </button>
         </div>
       </div>
 
       <div className="flex-grow overflow-y-auto p-4">
-        <div className="bg-white rounded-lg shadow-lg p-4">
-          {/* Sección principal */}
+        <div className="bg-white rounded-lg shadow-lg p-4 h-[calc(100vh-200px)] overflow-y-scroll custom-scrollbar">
           <div className="flex flex-wrap md:flex-nowrap mb-4">
             <img
               src={notice.imageUrl}
@@ -63,7 +80,11 @@ const NoticeDetails = () => {
             <>
               {notice.additionalSections.map((section, index) => (
                 <div key={index} className="mt-6">
-                  <div className="flex flex-wrap md:flex-nowrap ">
+                  <h2 className="text-lg font-semibold text-[#205106] text-center mb-2">
+                    {section.subtitle}
+                  </h2>
+
+                  <div className="flex">
                     {section.imageUrl && (
                       <img
                         src={section.imageUrl}
@@ -72,10 +93,7 @@ const NoticeDetails = () => {
                       />
                     )}
                     <div>
-                      <h2 className="text-lg font-semibold text-[#205106] text-center mb-2">
-                        {section.subtitle}
-                      </h2>
-                      <p className="text-sm text-[#464543]">
+                      <p className="pl-2 pt-1 text-sm text-[#464543]">
                         {section.content}
                       </p>
                     </div>

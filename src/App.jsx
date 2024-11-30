@@ -6,6 +6,7 @@ import GuidesPage from "./components/Guide/GuidesPage";
 import Layout from "./components/Layout/Layout";
 import NoticeDetails from "./components/Notice/NoticeDetails";
 import NoticePage from "./components/Notice/NoticePage";
+import ReportPage from "./components/Report/ReportPage";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
 
           <Route path="/noticias" element={<NoticePage />} />
           <Route path="/notice/:noticeId" element={<NoticeDetails />} />
+
+          <Route path="/report" element={<ReportPage />} />
         </Routes>
       </Layout>
     </Router>
