@@ -26,14 +26,14 @@ const FilteredResults = ({ categoryId, onBack }) => {
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
-
-    const filtered = guides.filter(
-      (item) =>
-        item.categoryId === categoryId &&
-        (item.title.toLowerCase().includes(value) ||
-          item.description.toLowerCase().includes(value))
+    setFilterResults(
+      guides.filter(
+        (item) =>
+          item.categoryId === categoryId &&
+          (item.title.toLowerCase().includes(value) ||
+            item.description.toLowerCase().includes(value))
+      )
     );
-    setFilterResults(filtered);
   };
 
   const handleClearSearch = () => {
@@ -46,47 +46,51 @@ const FilteredResults = ({ categoryId, onBack }) => {
   };
 
   return (
-    <div className="relative bg-[#f8f9f5]">
-      <div className="flex items-center p-2 bg-[#edefe5]">
+    <div className="bg-[#f8f9f5] min-h-screen flex flex-col">
+      <div className="flex items-center p-4 bg-[#edefe5] sticky top-0 z-10 shadow">
         <button
-          className="text-sm bg-transparent text-[#205106] font-bold"
+          className="text-sm bg-transparent text-[#205106] font-bold flex items-center"
           onClick={onBack}
         >
-          <img src={goBack} alt="Back" />
+          <img src={goBack} alt="Back" className="w-5 h-5" />
         </button>
-        <h4 className="text-center pr-56 mb-0.5 flex-grow text-black text-xl font-bold">
+        <h4 className="flex-grow text-center pr-52 text-black text-xl font-bold">
           Resultados
         </h4>
       </div>
 
       <div className="mt-4 px-4">
-        <div className="relative w-full bg-white rounded-full flex items-center shadow">
-          <img className="ml-2" src={search} alt="Search" />
+        <div className="relative w-full bg-white rounded-full flex items-center shadow-md">
+          <img className="ml-4 w-5 h-5" src={search} alt="Search" />
           <input
             type="text"
             value={searchTerm}
             onChange={handleSearch}
             placeholder="Buscar..."
-            className="w-full py-2 pl-4 pr-10 text-sm bg-transparent text-gray-600 rounded-full focus:outline-none"
+            className="w-full py-2 pl-4 pr-10 text-sm bg-transparent text-gray-600 focus:outline-none rounded-full"
           />
+          {searchTerm && (
+            <button onClick={handleClearSearch} className="absolute right-4">
+              <img src={iconX} alt="Clear" className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
 
-      {searchTerm && (
-        <div className="mt-2 px-4">
-          <span className="inline-block bg-[#a0cfd0] text-[#1e4e4e] px-4 py-1 text-xs rounded-full">
-            {searchTerm}{" "}
-            <button
-              className="ml-2 bg-transparent text-[#205106]"
-              onClick={handleClearSearch}
-            >
-              <img src={iconX} alt="X" />
-            </button>
-          </span>
-        </div>
-      )}
-
-      <div className="mt-6 px-4">
+      <div className="mt-6 px-4 flex-grow">
+        {searchTerm && (
+          <div className="mt-2 px-4">
+            <span className="inline-block bg-[#a0cfd0] text-[#1e4e4e] px-4 py-1 text-xs rounded-full">
+              {searchTerm}{" "}
+              <button
+                className="ml-2 bg-transparent text-[#205106]"
+                onClick={handleClearSearch}
+              >
+                <img src={iconX} alt="X" />
+              </button>
+            </span>
+          </div>
+        )}
         {filterResults.length > 0 ? (
           filterResults.map((item) => (
             <div

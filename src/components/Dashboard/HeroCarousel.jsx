@@ -22,23 +22,31 @@ const HeroCarousel = () => {
   };
 
   return (
-    <div className="absolute w-[329px] h-[136px] top-[90px] left-8">
+    <div className="w-full h-[200px] iphone12pro:h-[130px] iphone14promax:h-[180px] sm:h-[300px] relative flex items-center justify-center bg-gray-100 rounded-md overflow-hidden px-4">
       <img
-        className="w-full h-full object-cover"
+        className="object-cover w-full h-full rounded-lg"
         alt="Hero"
         src={images[currentIndex]}
       />
       <button
-        className="absolute top-[54px] left-[9px] bg-transparent p-0 focus:outline-none"
+        className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
         onClick={handlePrev}
       >
-        <img src={arrowLeft} alt="Previous" />
+        <img
+          src={arrowLeft}
+          alt="Previous"
+          className="w-5 h-5 iphone14promax:w-6 iphone14promax:h-6"
+        />
       </button>
       <button
-        className="absolute top-[54px] right-[9px] bg-transparent p-0 focus:outline-none"
+        className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
         onClick={handleNext}
       >
-        <img src={arrowRight} alt="Next" />
+        <img
+          src={arrowRight}
+          alt="Next"
+          className="w-5 h-5 iphone14promax:w-6 iphone14promax:h-6"
+        />
       </button>
     </div>
   );

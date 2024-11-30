@@ -1,8 +1,59 @@
-# React + Vite
+# 🌱 **Plataforma de Gestión de Residuos**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 **Descripción del Proyecto**
 
-Currently, two official plugins are available:
+La **Plataforma de Gestión de Residuos** está diseñada para facilitar el entendimiento, aprendizaje y formación en temas relacionados con la gestión de residuos.  
+El objetivo principal es **promover prácticas sostenibles** mediante la digitalización de procesos clave como:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Recolección
+- Clasificación
+- Reciclaje
+- Disposición final
+
+---
+
+## 🌟 **Características Principales**
+
+| Característica              | Descripción                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| 📰 **Noticias Ambientales** | Accede a las últimas noticias sobre el medio ambiente y la gestión de residuos. |
+| ♻️ **Guías de Reciclaje**   | Aprende cómo clasificar y reciclar diferentes tipos de residuos.                |
+| ❓ **Quizzes Interactivos** | Pon a prueba tus conocimientos con cuestionarios dinámicos.                     |
+
+---
+
+## 💻 **Tecnologías Utilizadas**
+
+| Área         | Tecnologías            |
+| ------------ | ---------------------- |
+| **Frontend** | React.js, Tailwind CSS |
+| **Entorno**  | Vite                   |
+
+---
+
+## 🚀 **Cómo Utilizar el Proyecto**
+
+### 1️⃣ **Clonar el repositorio**
+
+```bash
+git clone https://github.com/GonzaMS/HCI-MobileApp.git
+cd HCI-MobileApp
+```
+
+### 2️⃣ **Instalar las dependencias**
+
+```bash
+npm install
+```
+
+### 3️⃣ **Iniciar el proyecto**
+
+```bash
+npm run dev
+```
+
+### 4️⃣ **Usar en modo mobile**
+
+Asegúrate de abrir la aplicación en el navegador con las herramientas de desarrollador activadas y configuradas en modo pantalla mobile.
+
+---

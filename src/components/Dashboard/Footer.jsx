@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 import quizIcon from "../../assets/Dashboard/vector-1.svg";
 import newsIcon from "../../assets/Dashboard/vector-4.svg";
 import homeIcon from "../../assets/Dashboard/vector-5.svg";
@@ -9,33 +8,33 @@ const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="absolute w-[393px] h-[73px] bottom-0 left-0 bg-[#edefe5] flex justify-evenly items-center">
+    <div className="fixed bottom-0 w-full bg-[#edefe5] flex justify-around items-center px-4 py-3 shadow-md">
       <button
         onClick={() => navigate("/")}
-        className="flex items-center justify-center bg-transparent focus:outline-none"
+        className="flex items-center justify-center focus:outline-none"
       >
-        <img className="w-[31px] h-[33px]" alt="Home" src={homeIcon} />
+        <img className="w-6 h-6 sm:w-8 sm:h-8" alt="Home" src={homeIcon} />
       </button>
 
       <button
         onClick={() => navigate("/guias")}
-        className="flex items-center justify-center bg-transparent focus:outline-none"
+        className="flex items-center justify-center focus:outline-none"
       >
-        <img className="w-[30px] h-[33px]" alt="Guías" src={guidesIcon} />
+        <img className="w-6 h-6 sm:w-8 sm:h-8" alt="Guías" src={guidesIcon} />
       </button>
 
       <button
         onClick={() => navigate("/quizzes")}
-        className="flex items-center justify-center bg-transparent focus:outline-none"
+        className="flex items-center justify-center focus:outline-none"
       >
-        <img className="w-[30px] h-[33px]" alt="Quizzes" src={quizIcon} />
+        <img className="w-6 h-6 sm:w-8 sm:h-8" alt="Quizzes" src={quizIcon} />
       </button>
 
       <button
         onClick={() => navigate("/noticias")}
-        className="flex items-center justify-center bg-transparent focus:outline-none"
+        className="flex items-center justify-center focus:outline-none"
       >
-        <img className="w-[31px] h-[33px]" alt="Noticias" src={newsIcon} />
+        <img className="w-6 h-6 sm:w-8 sm:h-8" alt="Noticias" src={newsIcon} />
       </button>
     </div>
   );

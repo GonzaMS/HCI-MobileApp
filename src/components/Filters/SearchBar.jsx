@@ -1,7 +1,7 @@
 import { useState } from "react";
 import searchIcon from "../../assets/Dashboard/search-fill0-wght400-grad0-opsz24-1.svg";
 
-const SearchBar = ({ value, onChange, onSearch }) => {
+const SearchBar = ({ value, onChange }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e) => {
@@ -12,21 +12,21 @@ const SearchBar = ({ value, onChange, onSearch }) => {
   return (
     <form
       onSubmit={handleSearch}
-      className="absolute top-[235px] left-8 w-[331px] h-[38px]"
+      className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto mt-4"
     >
-      <div className="relative flex items-center w-full h-full bg-white rounded-full shadow-md px-4">
+      <div className="relative flex items-center w-full h-12 bg-white rounded-full shadow px-4">
         <input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="Search"
-          className="flex-grow bg-transparent text-xs text-[#43483e] font-normal outline-none"
+          placeholder="Buscar..."
+          className="flex-grow bg-transparent text-sm text-[#43483e] placeholder-gray-400 focus:outline-none"
         />
         <button type="submit" className="bg-transparent p-0 focus:outline-none">
           <img
             src={searchIcon}
             alt="Search Icon"
-            className="w-5 h-5 object-contain"
+            className="w-6 h-6 object-contain"
           />
         </button>
       </div>
